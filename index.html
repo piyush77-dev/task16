@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript DOM Tasks</title>
+    <style>
+        #output { margin-top: 10px; }
+        #textBox { margin-top: 10px; font-size: 16px; }
+        #dateTime { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Task 1: Basic Information Form</h2>
+    <form id="infoForm">
+        Name: <input type="text" id="name"><br><br>
+        Email: <input type="email" id="email"><br><br>
+        Age: <input type="number" id="age"><br><br>
+        <button type="button" onclick="showInfo()">Submit</button>
+    </form>
+    <div id="output"></div>
+
+    <hr>
+
+    <h2>Task 2: Change Image on Button Click</h2>
+    <img id="myImage" src="https://via.placeholder.com/150" width="150"><br><br>
+    <button onclick="changeImage()">Change Image</button>
+
+    <hr>
+
+    <h2>Task 3: Increase / Decrease Font Size</h2>
+    <div id="textBox">This is some sample text to resize.</div>
+    <button onclick="changeFontSize(1)">Increase Font</button>
+    <button onclick="changeFontSize(-1)">Decrease Font</button>
+
+    <hr>
+
+    <h2>Task 4: Show Current Date & Time</h2>
+    <div id="dateTime"></div>
+
+    <script>
+        // Task 1: Show form data
+        function showInfo() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let age = document.getElementById("age").value;
+
+            let output = `<b>Your Info:</b><br>Name: ${name}<br>Email: ${email}<br>Age: ${age}`;
+            document.getElementById("output").innerHTML = output;
+        }
+
+        // Task 2: Change image source
+        function changeImage() {
+            document.getElementById("myImage").src = "https://thewowstyle.com/wp-content/uploads/2015/01/nature-images..jpg";
+        }
+
+        // Task 3: Change font size
+        function changeFontSize(change) {
+            let text = document.getElementById("textBox");
+            let currentSize = parseInt(window.getComputedStyle(text).fontSize);
+            text.style.fontSize = (currentSize + change) + "px";
+        }
+
+        // Task 4: Show current date and time
+        function updateDateTime() {
+            let now = new Date();
+            document.getElementById("dateTime").innerHTML = "Current Date & Time: " + now.toLocaleString();
+        }
+
+        // Auto-update date/time every second
+        setInterval(updateDateTime, 1000);
+    </script>
+
+</body>
+</html>
